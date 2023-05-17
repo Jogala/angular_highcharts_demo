@@ -1,0 +1,6 @@
+<p>tab-energy works!</p>
+<app-chart-energy-by-type
+  *ngIf="selectedModelRunDates && selectedModelRunDates.date1 != ''"
+  [modelRunDate1]="selectedModelRunDates.date1"
+  [modelRunDate2]="selectedModelRunDates.date2"
+></app-chart-energy-by-type>

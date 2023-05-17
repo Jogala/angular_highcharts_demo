@@ -1,0 +1,13 @@
+<p>chart works!</p>
+<div *ngIf="states.loading">
+  Loading Data
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="states.error">Error occurred while loading data</div>
+<div *ngIf="!states.error && states.empty && !states.loading">
+  No Data available
+</div>
+<div *ngIf="!states.loading && !states.error && !states.empty">
+  <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions">
+  </highcharts-chart>
+</div>

@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=CGLdH5ORX-Y&t=3015
+
 # AngularApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
@@ -25,3 +27,64 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Highcharts
+
+https://www.highcharts.com/blog/tutorials/highcharts-with-angular-v14/
+
+npm install highcharts --save
+npm install highcharts-angular --save
+
+in app.module.ts add:
+import { HighchartsChartModule } from "highcharts-angular";
+and add HighchartsChartModule in imports.
+
+## Angular Material
+
+A collection of already existing components that we can use in our application.
+
+ng add @angular/material
+ng add @angular/cdk
+
+Folder structure angular project:
+
+- src
+
+  - app
+    - components / pages
+      - component1
+      - component2
+        ...
+    - services
+      - service1
+      - service2
+        ...
+    - models
+      - model1.ts
+      - model2.ts
+    - modules
+      - feature-module1
+      - feature-module2
+        ...
+    - shared
+      - shared.module.ts
+    - app.component.ts
+    - app.component.html
+    - app.component.scss
+    - app.component.spec.ts
+    - app.module.ts
+  - assets
+  - environments
+  - index.html
+  - main.ts
+    ...
+
+  ## angular directives
+
+  - component directives <app-my-component></app-my-component>
+  - attribute directives <div [ngClass]>Foooo</div>
+  - structural directives <div \*ngIf="condition">Foooo</div>
+
+## content projection
+
+https://www.youtube.com/watch?v=c9b7lcjxUHo

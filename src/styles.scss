@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+jr_scss_class {
+    font: 22;
+    color: red;
+}
+
+.jr {
+    div {
+      color: red;
+    }
+}
+
+jr {
+    div {
+      color: red;
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,98 @@
+<app-home></app-home>
+<router-outlet></router-outlet>
+
+<h1>My Angular App</h1>
+
+<!-- <nav>
+  <div>
+      <a>Angular Router</a>
+      <ul routerLinkActive="active">
+          <li class="nav-item"><a class="nav-link" routerLink="['country', 'Deutschland']">Deutschland</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="courses">Courses</a></li>
+      </ul>
+  </div>
+</nav> -->
+
+
+
+<!-- <mat-sidenav-container>
+  <mat-sidenav>Start</mat-sidenav>
+  <mat-sidenav-content>Main</mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<!-- <app-country-page country="Deutschland"></app-country-page>
+<app-country-page country="Frankreich"></app-country-page>
+<app-country-page country="Spanien"></app-country-page>
+<app-country-page country="Italien"></app-country-page> -->
+
+Interpolation refers to embedding expressions into marked up text. 
+By default, interpolation uses the double curly braces &#123; &#123; and &#125; &#125; as delimiters.
+
+Example:
+
+this is the value of the title property of the AppComponent:
+title={{title}}
+
+We can also call functions via interpolation:
+<div>
+  current time: <b>{{ getCurrentDate() }}</b> <br>
+</div>
+
+We can also perform so called property binding, such that we can pass data to a component which we include in a parent html.
+<app-my-chart [parent_title]=title [value]=123 [name_that_has_to_be_used_in_html]="'jojo'"></app-my-chart>
+
+Attribute binding allows us to set values on the html properties of object:
+
+<table  style="border-collapse: collapse;">
+  <thead  style="border: 1px solid black;">
+      <tr>
+          <!-- <th colspan="2"  style="border: 1px solid black;">   -->
+          <th [attr.colspan]=colSpanValue  style="border: 1px solid black;">
+              Friends List
+          </th>
+      </tr>
+  </thead>
+  <tbody  style="border: 1px solid black;">
+      <tr>
+          <td>Lotanna</td>
+          <td>Nwose</td>
+      </tr>
+  </tbody>
+</table>
+<br>
+<br>
+CSS Class binding:
+<div [className]="'jr'">Test</div>
+<div class="jr">Test</div>
+<app-my-chart class="jr" [parent_title]=title [value]=123></app-my-chart>
+<br>
+<br>
+Event binding:
+<button (click)="onSaveButtonClickEvent($event)">Save</button>
+<br>
+<br>
+Template variables:
+The input is bound to the phone varibale
+<input #phone placeholder="phone number" value="12345" />
+{{ phone.value }}
+{{ phone }}
+<br>
+<br>
+Displaying entries of lists via ngFor:
+<div>
+<select>
+  <option selected>I am selected</option>
+  <option *ngFor="let color of arrayOfColors"> {{color}}</option>
+</select>
+</div>
+<br>
+<br>
+<h1>ng forms:</h1>
+We have to add FormsModule in the app.modules.ts file and then have to import it in the app.component.ts file.
+<input (change)="onValueChange($event)" type="text" [(ngModel)]="myAge" />
+<br>
+<br>
+Life cycle hooks:
+<br>
+<img src="/assets/angular_life_cycle_hooks.png" alt="image">
