@@ -4,9 +4,9 @@ import {
   inject,
   EventEmitter,
   ViewChild,
-  ElementRef,
 } from '@angular/core';
-import { MatSelect, MatSelectChange } from '@angular/material/select';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSelect } from '@angular/material/select';
 
 import { MyDataService } from '../../services/my-data/my-data.service';
 import { SelectedModelRunDates } from 'src/app/models/selected-model-run-dates';
@@ -23,26 +23,44 @@ export class ModelRunSelectorsComponent {
 
   @ViewChild('selectModelRunDate1') selectModelRunDate1!: MatSelect;
 
-  selectedModelRunDates: SelectedModelRunDates = new SelectedModelRunDates();
-
+  myForm: FormGroup;
   dataService: MyDataService = inject(MyDataService);
-  modelRunDates: string[] = [];
+  modelRunDates: String[] = [];
 
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {
+    this.myForm = this.formBuilder.group({
+      modelRunDate1: [''],
+      modelRunDate2: [''],
+    });
+
+    // Subscribe to valueChanges of mySelect control
+    this.myForm.controls['modelRunDate1'].valueChanges.subscribe(() => {
+      this.onModelRunDatesSelectionChange();
+    });
+    this.myForm.controls['modelRunDate2'].valueChanges.subscribe(() => {
+      this.onModelRunDatesSelectionChange();
+    });
+  }
 
   ngOnInit() {
     this.dataService.loadModelRunDates().then((modelRunDates) => {
       this.modelRunDates = modelRunDates;
       if (modelRunDates.length > 0) {
-        this.selectedModelRunDates.date1 = modelRunDates[0];
+        this.myForm.controls['modelRunDate1'].setValue(modelRunDates[0]);
       }
 
-      console.log(typeof this.selectModelRunDate1);
-      this.selectModelRunDate1.selectionChange.emit();
+      this.onModelRunDatesSelectionChange();
     });
   }
 
-  onModelRunDatesSelectionChange(event: MatSelectChange) {
-    this.selectedModelRunDatesChangedEvent.emit(this.selectedModelRunDates);
+  onModelRunDatesSelectionChange() {
+    let selectedModelRunDates: SelectedModelRunDates =
+      new SelectedModelRunDates();
+    selectedModelRunDates.date1 =
+      this.myForm.controls['modelRunDate1'].getRawValue();
+    selectedModelRunDates.date2 =
+      this.myForm.controls['modelRunDate2'].getRawValue();
+
+    this.selectedModelRunDatesChangedEvent.emit(selectedModelRunDates);
   }
 }
